@@ -16,4 +16,13 @@ This is the decryption of 2 cipher texts provided by the professor, by way of fr
 
 ### Instructions
 
+- All Python programs were tested and used in repl.it
+
 ### Sources
+
+- Repl.it
+  - https://repl.it/~
+- Frequency Analysis Assignment
+  - https://github.com/rugbyprof/4663-Cryptography/tree/master/Assignments/A03
+  
+I used repl.it to write and use Python code, which is borrowed from the resources given in the assignment. 
