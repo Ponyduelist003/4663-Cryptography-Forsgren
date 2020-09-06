@@ -6,9 +6,13 @@ This is the decryption of 2 cipher texts provided by the professor, by way of fr
 
 ### Files:
 
-|   #   | File                        | Description                                                |
-| :---: | --------------------------- | ---------------------------------------------------------- |
-|   1   | [Frequency](./Frequency.py) | Frequency Anaylsis Code                                    |
+|   #   | File                            | Description                                                |
+| :---: | ------------------------------- | ---------------------------------------------------------- |
+|   1   | [Frequency](./Frequency.py)     | Frequency Anaylsis Code                                    |
+|   2   | [Decrypted1](./Decrypted_1.txt) | First Decrypted Cipher                                     |
+|   3   | [Decryption1](./Decryption1.py) | Code that prints first decryption                          |
+|   4   | [Decrypted2](./Decrypted_2.txt) | Second Decrypted Cipher                                    |
+|   5   | [Decryption2](./Decryption2.py) | Code that prints second decryption                         |
 
 ### Instructions
 
