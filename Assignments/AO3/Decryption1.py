@@ -2,7 +2,7 @@
 # list of letters
 alphabet = [chr(x+97) for x in range(26)]
 
-#list of letters to substitute
+#list of letters to substitute, initiated to - to aid guesswork
 subs = ['-'] * 26
 subs[11] = 'e'
 subs[2] = 't'
