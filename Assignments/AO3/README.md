@@ -2,7 +2,7 @@
 ### Griffin Forsgren
 ### Description:
 
-This is the decryption of 2 cipher texts provided by the professor, by way of frequency analysis on the cipher text and deduction of letter substitution from there. 
+This is the decryption of 2 cipher texts provided by the professor, by way of frequency analysis on the cipher text and deduction of letter substitution from there. Most common letters were assumed to be E and T, H was then deduced by the almost necessary presence of the word "the", and such a process of looking for common words and deducing substitutions from them was used to work through the entire cipher. 
 
 ### Files:
 
