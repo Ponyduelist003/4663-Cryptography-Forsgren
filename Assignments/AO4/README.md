@@ -9,7 +9,8 @@ Takes two keywords and a string from the user, encodes the user's message via AD
 |   1   | [adfgx.py](./adfgx.py)     | Main adfgx encryption program                              |
 
 ### Instructions
-
+Put Python code in repl.it
+When you run the code, enter two codewords and message as prompted
 
 ### Sources
   - AskPython:
