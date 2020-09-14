@@ -4,9 +4,10 @@
 Takes two keywords and a string from the user, encodes the user's message via ADFGX encryption using the first word to create the polybius square, and then decodes the message. 
 
 ### Files:
-|   #   | File                       | Description                                                |
-| :---: | -------------------------- | ---------------------------------------------------------- |
-|   1   | [adfgx.py](./adfgx.py)     | Main adfgx encryption program                              |
+|   #   | File                                  | Description                                                |
+| :---: | ------------------------------------- | ---------------------------------------------------------- |
+|   1   | [adfgx.py](./adfgx.py)                | Main adfgx encryption program                              |
+|   2   | [sampleResult.txt](./sampleResult.txt)| Sample of the result of the program                        |
 
 ### Instructions
 - Put Python code in repl.it
