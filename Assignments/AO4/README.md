@@ -6,7 +6,7 @@ Takes two keywords and a string from the user, encodes the user's message via AD
 ### Files:
 |   #   | File                       | Description                                                |
 | :---: | -------------------------- | ---------------------------------------------------------- |
-|   1   | [afdgx.py](./adfgx.py)     | Main adfgx encryption program                              |
+|   1   | [adfgx.py](./adfgx.py)     | Main adfgx encryption program                              |
 
 ### Instructions
 
