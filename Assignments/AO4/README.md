@@ -15,4 +15,5 @@ Takes two keywords and a string from the user, encodes the user's message via AD
     
   - Class resources:
     - https://github.com/rugbyprof/4663-Cryptography/tree/master/Assignments/A04
+  
   I used the sources with help regarding certain encoding issues and for the dummy code provided by class. 
