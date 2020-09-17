@@ -1,8 +1,7 @@
-Please enter the Polybius keyword:Fairy
-Please enter the second keyword (do not choose a word with repeated letters):Typo
-Please enter the text to be decrypted,no punctuation:This is not a pipe
+plaintext = fairy where are you going?
+python main.py input=plaintext key1=these key2=swords op=encrypt
+FG AF AA GX AG AG GG DA XX DA GG XF DA XF AF GA DG GD GX XX FX 
 
-Encrypted message:
-DX XD DF GF GG GA AD XA AG XG GA FF AA FF 
-Decrypted message:
-thisisnotapipe
+plaintext = FG AF AA GX AG AG GG DA XX DA GG XF DA XF AF GA DG GD GX XX FX
+python main.py input=plaintext key1=these key2=swords op=decrypt
+fairywhereareyougoing
