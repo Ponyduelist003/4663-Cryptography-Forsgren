@@ -215,9 +215,6 @@ def adfgx_encrypt(**kwargs):
       i += 1
       i = i % len(key2)
 
-  print(ciphertext)
-  print(matrix)
-
   temp_matrix = sorted(matrix.items())
 
   sorted_matrix = {}
@@ -225,8 +222,6 @@ def adfgx_encrypt(**kwargs):
   # Rebuild the sorted matrix into a dictionary again
   for item in temp_matrix:
       sorted_matrix[item[0]] = item[1]
-
-  print(sorted_matrix)
 
   print_message(sorted_matrix, key2)
 
@@ -293,7 +288,6 @@ def adfgx_decrypt(**kwargs):
             if i < len(ciphertext):
               sorted_matrix[k] += ciphertext[i]
               i += 1
-  print(sorted_matrix)
 
   #for every row, add letter to string
   tempText = ''
@@ -303,8 +297,7 @@ def adfgx_decrypt(**kwargs):
   for i in range(key2_length):
     if len(sorted_matrix[key2[i]]) == rows:
       tempText += sorted_matrix[key2[i]][rows - 1]
-  
-  print(tempText)
+
 
   #cipher text equal to temp string
   ciphertext = tempText
