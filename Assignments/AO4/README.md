@@ -1,7 +1,7 @@
 ## AO4 - ADFGX Encryption
 ### Griffin Forsgren
 ### Description:
-Takes two keywords and a string from the user, encodes the user's message via ADFGX encryption using the first word to create the polybius square, and then decodes the message. 
+Takes an input file and two keywords from command line, and applies adfgx encryption or decryption at the user's discretion
 
 ### Files:
 |   #   | File                                  | Description                                                |
@@ -11,7 +11,8 @@ Takes two keywords and a string from the user, encodes the user's message via AD
 
 ### Instructions
 - Put Python code in repl.it
-- When you run the code, enter two codewords and message as prompted
+- Write an input text file
+- Format the command line prompt as per usage()
 
 ### Sources
   - AskPython:
