@@ -1,4 +1,5 @@
 import sys
+import os
 import math
 
 alphabet = [chr(x+97) for x in range(26)]
@@ -158,99 +159,237 @@ def print_message(matrix,key2word):
             i += 1
     print("")
 
-#set up first key as a Polybius lookup
-lookupWord = input("Please enter the Polybius keyword:")
-table = AdfgxLookup(lookupWord)
-key1 = table.build_polybius_lookup()
+def adfgx_encrypt(**kwargs):
+  message = kwargs.get('input',None)
+  key1 = kwargs.get('key1',None)
+  key2 = kwargs.get('key2',None)
 
-#set second key word
-shuffleWord = input("Please enter the second keyword (do not choose a word with repeated letters):")
-key2 = shuffleWord.upper()
+  #makes sure neither key contains duplicate letters
 
-#initialize message, removes spaces, set up a temp
-message = input("Please enter the text to be decrypted,no punctuation:")
-message = message.replace(' ', '')
-tempMessage = ""
+  newkey = []           # create a list for letters
+  for i in key1:        # loop through key
+    if not i in newkey: # skip duplicates
+      newkey.append(i) 
+  key1 = ''
+  for l in newkey:
+    key1 += l  
 
-#for every letter in message, put polybius lookup into temp
-for l in message:
-  tempMessage += key1[l.lower()]
+  newkey = []           # create a list for letters
+  for i in key2:        # loop through key
+    if not i in newkey: # skip duplicates
+      newkey.append(i)  
+  key2 = ''
+  for l in newkey:
+    key2 += l
+  
+  # should test if file exists
+  with open(message) as f:
+      plaintext = f.read()
 
-#replace message with temp
-message = tempMessage
+  #set up ADFGX table
+  table = AdfgxLookup(key1)
+  lookup = table.build_polybius_lookup()
 
-# get sizes to help calculate matrix column lengths
-key2_length = len(key2)             # length of key
-message_length = len(message)       # message length 
+  #cut blanks from plaintext, make all lower case
+  #blank cipher text
+  plaintext = plaintext.replace(' ','')
+  plaintext = plaintext.lower()
+  ciphertext = ''
 
-# figure out the rows and how many short columns
-rows = math.ceil(float(message_length)/float(key2_length))
-short_cols = key2_length - (message_length%key2_length)
+  #set up cipher text
+  for letter in plaintext:
+    if letter in alphabet:
+      ciphertext += lookup[letter.lower()]
 
-# dictionary for our new matrix
-matrix = {}
+  # dictionary for our new matrix
+  matrix = {}
 
-# every letter is a key that points to a list
-for k in key2:
-    matrix[k] = []
+  # every letter is a key that points to a list
+  for k in key2:
+      matrix[k] = []
 
-# add the message to the each list in a row-wise fashion
-i = 0
-for m in message:
-    matrix[key2[i]].append(m)
-    i += 1
-    i = i % len(key2)
+  # add the message to the each list in a row-wise fashion
+  i = 0
+  for m in ciphertext:
+      matrix[key2[i]].append(m)
+      i += 1
+      i = i % len(key2)
 
+  print(ciphertext)
+  print(matrix)
 
-#print_matrix(matrix,rows)
+  temp_matrix = sorted(matrix.items())
 
-# Alphabetize the matrix (not really necessary) if you just
-# alphabetize the key2 word and use it to access the dictionary
-# in alphabetical order instead. BUT this does stick to the 
-# algorithm
-temp_matrix = sorted(matrix.items())
+  sorted_matrix = {}
 
+  # Rebuild the sorted matrix into a dictionary again
+  for item in temp_matrix:
+      sorted_matrix[item[0]] = item[1]
 
-print("")
+  print(sorted_matrix)
 
-sorted_matrix = {}
+  print_message(sorted_matrix, key2)
 
-# Rebuild the sorted matrix into a dictionary again
-for item in temp_matrix:
-    sorted_matrix[item[0]] = item[1]
+def adfgx_decrypt(**kwargs):
+  message = kwargs.get('input',None)
+  key1 = kwargs.get('key1',None)
+  key2 = kwargs.get('key2',None)
 
-#print the encrypted message
-print("Encrypted message:")
-print_message(sorted_matrix, key2)
+  #makes sure neither key contains duplicate letters
+  newkey = []           # create a list for letters
+  for i in key1:        # loop through key
+    if not i in newkey: # skip duplicates
+      newkey.append(i) 
+  key1 = ''
+  for l in newkey:
+    key1 += l  
 
-#set a blank string
-restoredMessage = ""
+  newkey = []           # create a list for letters
+  for i in key2:        # loop through key
+    if not i in newkey: # skip duplicates
+      newkey.append(i)  
+  key2 = ''
+  for l in newkey:
+    key2 += l
 
-#for every letter in unsorted key, for every row, write to string horizontally
-for i in range(rows - 1):
+  #set up ADFGX table
+  table = AdfgxLookup(key1)
+  lookup = table.build_polybius_lookup()
+
+  # should test if file exists
+  with open(message) as f:
+    ciphertext = f.read()
+  ciphertext = ciphertext.replace(' ', '')
+  plaintext = ''
+
+  #dummy variables for columns and position in string
+  pos = 0
+  cols = len(key2)
+
+  # get sizes to help calculate matrix column lengths
+  key2_length = len(key2)             # length of key
+  message_length = len(ciphertext)    # message length 
+
+  # figure out the rows and how many short columns
+  rows = math.ceil(float(message_length)/float(key2_length))
+  short_cols = key2_length - (message_length%key2_length)
+
+  #establish sorted matrix
+  sorted_matrix = {}
   for l in key2:
-    restoredMessage += sorted_matrix[l][i]
+    sorted_matrix[l] = ''
 
-for l in key2:
-  if len(sorted_matrix[l]) == rows:
-    restoredMessage += sorted_matrix[l][rows - 1]
+  i = 0
+  for l in ciphertext:
+    for k in alphabet:
+      if k in key2:
+        if k in key2[0:(key2_length-short_cols)]:
+          for j in range(rows):
+            if i < len(ciphertext):
+              sorted_matrix[k] += ciphertext[i]
+              i += 1
+        else:
+          for j in range(rows-1):
+            if i < len(ciphertext):
+              sorted_matrix[k] += ciphertext[i]
+              i += 1
+  print(sorted_matrix)
 
-#set up two more blank strings
-tempPair = ""
-tempMessage = ""
+  #for every row, add letter to string
+  tempText = ''
+  for i in range(rows - 1):
+    for l in key2:
+      tempText += sorted_matrix[l][i]  
+  for i in range(key2_length):
+    if len(sorted_matrix[key2[i]]) == rows:
+      tempText += sorted_matrix[key2[i]][rows - 1]
+  
+  print(tempText)
 
-#for every pair of letters, check to find equivalent in key1, and add two tempMessage
-for i in range(0, len(restoredMessage), 2):
-  tempPair += restoredMessage[i]
-  tempPair += restoredMessage[i + 1]
-  for k in key1:
-    if key1[k] == tempPair.upper():
-      tempMessage += k
+  #cipher text equal to temp string
+  ciphertext = tempText
+
+  #set up two more blank strings
   tempPair = ""
+  tempMessage = ""
 
-#put tempMessage in restoredMessage
-restoredMessage = tempMessage
+  #for every pair of letters, check to find equivalent in key1, and add lookup key to tempMessage
+  for i in range(0, len(ciphertext), 2):
+    tempPair += ciphertext[i]
+    tempPair += ciphertext[i + 1]
+    for k in lookup:
+      if lookup[k] == tempPair.upper():
+        tempMessage += k
+    tempPair = ""
 
-#print decrypted message
-print("Decrypted message:")
-print(restoredMessage)
+  plaintext = tempMessage
+  
+  print(plaintext)
+  
+
+def mykwargs(argv):
+    '''
+    Processes argv list into plain args (list) and kwargs (dict).
+    Just easier than using a library like argparse for small things.
+    Example:
+        python file.py arg1 arg2 arg3=val1 arg4=val2 -arg5 -arg6 --arg7
+        Would create:
+            args[arg1, arg2, -arg5, -arg6, --arg7]
+            kargs{arg3 : val1, arg4 : val2}
+
+        Params with dashes (flags) can now be processed seperately
+    Shortfalls:
+        spaces between k=v would result in bad params
+        Flags aren't handled at all. Maybe in the future but this function
+            is meant to be simple.
+    Returns:
+        tuple  (args,kargs)
+    '''
+    args = []
+    kargs = {}
+
+    for arg in argv:
+        if '=' in arg:
+            key,val = arg.split('=')
+            kargs[key] = val
+        else:
+            args.append(arg)
+    return args,kargs
+
+
+def usage(message=None):
+    if message:
+        print(message)
+    name = os.path.basename(__file__)
+    print(f"Usage: python {name} [input=input_file_name] [key1=keyword1] [key2=keyword2] [op=encrypt/decrypt]")
+    print(f"Example:\n\t python {name} input=input_file.txt key1=first key2=second op=encrypt\n")
+    sys.exit()
+
+if __name__=='__main__':
+    """
+    Change the required params value below accordingly.
+    """
+
+    required_params = 4 # adjust accordingly
+
+    # get processed command line arguments 
+    _,params = mykwargs(sys.argv[1:])
+
+    # print usage if not called correctly
+    if len(params) < required_params:
+        usage()
+
+    operation = params.get('op',None)
+    infile = params.get('input',None)
+    key1 = params.get('key1',None)
+    key2 = params.get('key2',None)
+
+    if not operation and not infile and not key1 and not key2:
+        usage()
+
+    if operation.lower() == 'encrypt':
+      adfgx_encrypt(**params)
+    elif operation.lower() == 'decrypt':
+      adfgx_decrypt(**params)
+    else:
+      usage()
