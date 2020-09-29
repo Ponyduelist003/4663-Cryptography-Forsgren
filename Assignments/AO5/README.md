@@ -10,3 +10,8 @@
 ### Instructions:
 
 ### Sources
+-https://stackoverflow.com/questions/16922214/reading-a-text-file-and-splitting-it-into-single-words-in-python
+
+-https://www.geeksforgeeks.org/type-conversion-python
+
+-https://www.programiz.com/python-programming/methods/built-in/ord
