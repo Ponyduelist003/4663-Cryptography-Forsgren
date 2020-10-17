@@ -1,6 +1,7 @@
 ## 4663 Assignment 5 - Vigenere Breaking
 ### Griffin Forsgren
 ### Description:
+Takes a file encrypted via vigenere, finds the key length by using the Index of Coincidence, gets every possible decryption via a dictionary attack, and prints out the first 1000 characters of any decrypted text which it finds sufficiently English. 
 
 ### Files:
 |   #   | File                       | Description                                                |
