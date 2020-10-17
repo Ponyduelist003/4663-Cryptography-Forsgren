@@ -7,6 +7,8 @@ Takes a file encrypted via vigenere, finds the key length by using the Index of 
 |   #   | File                       | Description                                                |
 | :---: | -------------------------- | ---------------------------------------------------------- |
 |   1   | [main.py](./break_vig.py)  | Main python code                                           |
+|   2   | [input](./inputfile.txt)   | Sample input text                                          |
+|   3   | [output](./output.txt)     | Sample output text                                         |
 
 ### Instructions:
 
