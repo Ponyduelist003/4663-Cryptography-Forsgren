@@ -11,6 +11,7 @@ Takes a file encrypted via vigenere, finds the key length by using the Index of 
 |   3   | [output](./output.txt)     | Sample output text                                         |
 
 ### Instructions:
+Run the code as follows: python3 break_vig.py input=(inputfile)
 
 ### Sources
 -https://stackoverflow.com/questions/16922214/reading-a-text-file-and-splitting-it-into-single-words-in-python
