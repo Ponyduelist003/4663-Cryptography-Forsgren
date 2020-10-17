@@ -16,14 +16,14 @@ Run the code as follows: python3 break_vig.py input=inputfile
 ### Sources
 -Stack Overflow:
 
-  -https://stackoverflow.com/questions/16922214/reading-a-text-file-and-splitting-it-into-single-words-in-python
+  - https://stackoverflow.com/questions/16922214/reading-a-text-file-and-splitting-it-into-single-words-in-python
 
 -Geeks for Geeks:
 
-  -https://www.geeksforgeeks.org/type-conversion-python
+  - https://www.geeksforgeeks.org/type-conversion-python
 
 -Programiz:
 
-  -https://www.programiz.com/python-programming/methods/built-in/ord
+  - https://www.programiz.com/python-programming/methods/built-in/ord
   
 I used the sources to help me with file reading to read in the input and type conversion for the decryption algorithm
