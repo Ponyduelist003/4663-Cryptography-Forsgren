@@ -33,6 +33,8 @@ typical_frequency = {
     "z": 0.074
 }
 
+
+
 class frequency():
     def __init__(self):
         self.text = ""
@@ -110,39 +112,117 @@ def break_vig(**kwargs):
   with open(input_file) as f:
     ciphertext = f.read()
 
-  ciphertext = ciphertext.replace(' ','')
+  #ciphertext = ciphertext.replace(' ','')
   ciphertext = ciphertext.lower()
-
-  print(len(ciphertext))
+  cleantext = ""
+  for l in ciphertext:
+    if l in alphabet:
+      cleantext += l
 
   textFreq = frequency()
 
   keyLength = 0
-  tempIndex = 0
-  tempIndex2 = 0
+  IC = 0
   indexCoincidence = 0
   tempText = ""
+
+  # for each key length: N
+  #   find frequency of each letter
+  #   compare that letters frequency to the typical freguency by subtracting then squaring
+  #   average those N value to get the I.C.
+
+
+ #Start of Index of Coincidence Code
   for i in range(2,16):
     for j in range(i):
-      for k in range(j, len(ciphertext), i):
-        tempText += ciphertext[k]
+      #build temporary text
+      for k in range(j, len(cleantext), i):
+        tempText += cleantext[k]
+
+      #count frequency of temp text
       textFreq.count(tempText)
+
+      sum = 0
+      total = 0
+      for k,f in typical_frequency.items():
+          total += textFreq.freq[k]
+          sum += (f/100 - textFreq.freq[k]/len(tempText))**2
+
+      #for every letter, add percent frequency squared
+      N = len(tempText)
       for l in alphabet:
-        tempIndex2 += textFreq.freq[l] * (textFreq.freq[l] - 1)
-      tempIndex2 = tempIndex2/len(tempText)
-      tempIndex2 = tempIndex2/(len(tempText) - 1)
-      tempIndex2 = tempIndex2/26
-      tempIndex += tempIndex2
-      tempIndex2 = 0
+        ni = textFreq.freq[l]
+        IC = IC + (ni*(ni-1))/(N*(N-1))
+            
+      #clear frequency and text for next pass
+      textFreq.clear()
       tempText = ""
-    tempIndex = tempIndex/i
-    if abs(tempIndex - .068) < abs(indexCoincidence -.068):
-      indexCoincidence = tempIndex
+      
+    #for all passes through the loop, divide to find avg
+    #tempIndex = tempIndex/i
+    IC = IC/i
+    if IC > indexCoincidence:
+      indexCoincidence = IC
       keyLength = i
-    tempIndex = 0
-    textFreq.clear()
+    IC = 0
   print(keyLength)
-  print(ciphertext)
+
+  diction = open('dictionary', 'r')
+  lines = diction.readlines()
+  wordList = [""] * 45333
+  words = [" "] * 45333
+  count = 0
+  count2 = 0
+
+  for line in lines:
+    line = line.lower()
+    for l in line:
+      if l in alphabet:
+        wordList[count2] += l
+    if (len(wordList[count2])) == keyLength:
+      words[count] = wordList[count2]
+      #print(words[count])
+      count += 1
+    count2 += 1
+  
+  texts = [" "] * count
+
+  count = 0
+  pos = 0
+  plaintext = ""
+  for entry in words:
+    if entry != " ":
+      for l in cleantext:
+        if pos < 1000:
+          tempLetter = l
+          tempKey = entry[(pos % (len(entry)))]
+          num1 = ord(tempLetter) - 97
+          num2 = ord(tempKey) - 97
+          result = ((num1 - num2) % 26) + 97
+          letter = chr(result)
+          #print(letter)
+          if letter in alphabet:
+            plaintext += letter
+          pos += 1
+      texts[count] = plaintext
+      plaintext = ""
+      count += 1
+      #print(count)
+      pos = 0
+
+  match = 0
+  timer = 0
+  for entry in texts:
+    for line in wordList:
+      if line in entry:
+        match += len(line)
+    if match >= len(entry):
+      print(words[timer])
+      print(entry)
+    timer += 1
+    match = 0
+
+
 
 def usage(message=None):
     if message:
