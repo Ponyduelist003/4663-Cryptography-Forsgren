@@ -1,0 +1,11 @@
+ 
+Number 1 : 100
+ - Factors: 2 x 2 x 5 x 5  
+Number 2 : 12345
+ - Factors: 3 x 5 x 823  
+Number 3 : 231697363
+ - Factors: 419 x 607 x 911  
+Number 4 : 709
+ - 709 is prime
+ 
+Number 5 : 72490732415291 - Factors: 1973 x 147503 x 249089
