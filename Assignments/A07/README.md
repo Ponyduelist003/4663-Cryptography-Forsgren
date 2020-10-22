@@ -10,3 +10,5 @@ Reference: https://mathworld.wolfram.com/Lucas-LehmerTest.html
 The Rabin-Miller Test is a compositeness test which takes an odd integer n, which we let be equal to 2<sup>r</sup>s + 1 with s being an odd number. We can then choose some integer a such that 1 <= a <= n - 1, and if a<sup>s</sup> is congruent to 1(mod n) or a<sup>2js</sup> is congruent to -1(mod n) for some j such that 0 <= j <= r - 1, then n passes. If n is prime, it will pass for all possible values of a. 
 
 Reference: https://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html
+
+### Algorithm 3 -
