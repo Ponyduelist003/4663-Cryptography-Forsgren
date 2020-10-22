@@ -1,4 +1,4 @@
-## 4663 Assingment 6 - Get Factors
+## 4663 Assignment 6 - Get Factors
 ### Griffin Forsgren
 ### Description:
 This program takes a list of numbers, uses a recursive function on each number to get a list of it's factors, and then prints out the factors or states that the number is prime
