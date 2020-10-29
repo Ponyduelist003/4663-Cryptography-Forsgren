@@ -20,3 +20,5 @@ Reference: https://en.wikipedia.org/wiki/Lucas_primality_test
 AKS is a Deterministic Probability test with the following algorithm. First, check if your number is a perfect power, or a number n such that n = a<sup>b</sup> for positive integers a and b. If so, it is composite. Then, find the smallest r coprime to n such that ord<sub>r</sub>(n) > (log<sub>2</sub>n)<sup>2</sup>. Then, for all a where 2 <= a <= min(r, n - 1), check that a does not divide n. If it does, n is composite. If n <= r, n is prime. For a from 1 to ![equation](https://wikimedia.org/api/rest_v1/media/math/render/svg/66e8f8e1f842f93eeafb29da46bd297fd6accdbc), if for any such a it holds that (X + a)<sup>n</sup> != X<sup>n</sup> + a (mod X<sup>r</sup> - 1, n), n is composite. Otherwise, it is prime. 
 
 Reference: https://en.wikipedia.org/wiki/AKS_primality_test
+
+### Algorithm 5 - 
