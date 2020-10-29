@@ -18,3 +18,5 @@ Reference: https://en.wikipedia.org/wiki/Lucas_primality_test
 
 ### Algorithm 4 - AKS Primality Test
 AKS is a Deterministic Probability test with the following algorithm. First, check if your number is a perfect power, or a number n such that n = a<sup>b</sup> for positive integers a and b. If so, it is composite.
+
+Reference: https://en.wikipedia.org/wiki/AKS_primality_test
