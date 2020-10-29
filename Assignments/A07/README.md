@@ -15,3 +15,6 @@ Reference: https://mathworld.wolfram.com/Rabin-MillerStrongPseudoprimeTest.html
 The Lucas Primality test is a certification test that says, for any integer n, if there exists a where 1 < a < n such that a<sup>n - 1</sup> is congruent to 1 (mod n) and for every prime factor q of n - 1 it holds that a<sup>(n - 1)/q</sup> is not congruent to 1 (mod n), then n is prime. Otherwise, n is either 1, 2, or composite. 
 
 Reference: https://en.wikipedia.org/wiki/Lucas_primality_test
+
+### Algorithm 4 - AKS Primality Test
+AKS is a Deterministic Probability test with the following algorithm. First, check if your number is a perfect power, or a number n such that n = a<sup>b</sup> for positive integers a and b. If so, it is composite.
