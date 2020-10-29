@@ -21,4 +21,10 @@ AKS is a Deterministic Probability test with the following algorithm. First, che
 
 Reference: https://en.wikipedia.org/wiki/AKS_primality_test
 
-### Algorithm 5 - 
+### Algorithm 5 - Solovay-Strassen Primality Test
+Solovay-Strassen is a compositeness primality test which makes use of the Jacobi Symbol, an operation on a/n with some odd n and a < n where for each factor p<sub>k</sub> of n, we raise the Legendre symbol of a and p<sub>k</sub> (0 if a = 0 (mod p<sub>k</sub>), 1 if it isn't but a = x<sup>2</sup> (mod p<sub>k</sub>) for some integer x, and -1 if neither of the previous two conditions hold) to the power of p<sub>k</sub> present in n, and then multiply all the results. If a<sup>(n-1)/2</sup> is not congruent to the Jacobi Symbol of a and n (mod n) then n is composite and a is a witness. If not, n may be prime.
+
+References: https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test
+https://en.wikipedia.org/wiki/Jacobi_symbol
+
+### Algorithm 6 - 
