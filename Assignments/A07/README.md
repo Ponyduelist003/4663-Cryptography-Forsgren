@@ -27,4 +27,4 @@ Solovay-Strassen is a compositeness primality test which makes use of the Jacobi
 References: https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_test
 https://en.wikipedia.org/wiki/Jacobi_symbol
 
-### Algorithm 6 - 
+### Algorithm 6 - Bailie-PSW test 
