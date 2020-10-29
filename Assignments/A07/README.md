@@ -28,3 +28,6 @@ References: https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_tes
 https://en.wikipedia.org/wiki/Jacobi_symbol
 
 ### Algorithm 6 - Bailie-PSW test 
+
+References: https://en.wikipedia.org/wiki/Baillie%E2%80%93PSW_primality_test
+https://en.wikipedia.org/wiki/Lucas_pseudoprime
