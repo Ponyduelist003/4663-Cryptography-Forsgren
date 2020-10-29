@@ -17,6 +17,6 @@ The Lucas Primality test is a certification test that says, for any integer n, i
 Reference: https://en.wikipedia.org/wiki/Lucas_primality_test
 
 ### Algorithm 4 - AKS Primality Test
-AKS is a Deterministic Probability test with the following algorithm. First, check if your number is a perfect power, or a number n such that n = a<sup>b</sup> for positive integers a and b. If so, it is composite.
+AKS is a Deterministic Probability test with the following algorithm. First, check if your number is a perfect power, or a number n such that n = a<sup>b</sup> for positive integers a and b. If so, it is composite. Then, find the smallest r coprime to n such that ord<sub>r</sub>(n) > (log<sub>2</sub>n)<sup>2</sup>
 
 Reference: https://en.wikipedia.org/wiki/AKS_primality_test
