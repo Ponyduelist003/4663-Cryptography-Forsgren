@@ -28,6 +28,8 @@ References: https://en.wikipedia.org/wiki/Solovay%E2%80%93Strassen_primality_tes
 https://en.wikipedia.org/wiki/Jacobi_symbol
 
 ### Algorithm 6 - Bailie-PSW test 
+Bailie-PSW is a probabilistic test where, after checking for small prime factors and determining a number to be a strong probable prime, we then find the first D in the sequence 5, -7, 9, -11, 13, -15,... for which the Jacobi Symbol of D/n is 1. Let P = 1 and Q = (1 - D)/4. We then perform a Lucas Psuedoprime test, factoring n + 1 into the form d * 2<sup>s</sup> for some odd number d. If we can find that U<sub>d</sub> = 0 (mod n) or that V<sub>d * 2<sup>r</sup></sub> = 0 (mod n) for the Lucas Sequence explained in references, then n is a Strong Lucas Pseudoprime and passes the test. 
 
 References: https://en.wikipedia.org/wiki/Baillie%E2%80%93PSW_primality_test
 https://en.wikipedia.org/wiki/Lucas_pseudoprime
+https://en.wikipedia.org/wiki/Lucas_sequence
