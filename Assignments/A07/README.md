@@ -37,4 +37,4 @@ https://en.wikipedia.org/wiki/Lucas_pseudoprime
 
 https://en.wikipedia.org/wiki/Lucas_sequence
 
-### Algorithm 7 -
+
